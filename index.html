@@ -32,7 +32,11 @@
     <!-- vue app container -->
     <div id="app">
       <div class="container-custom">
-        <div class="carousel-container">
+        <div
+          class="carousel-container"
+          @mouseleave="startInterval()"
+          @mouseover="stopInterval()"
+        >
           <!-- contenitore slides -->
           <div class="slide-container">
             <img
@@ -41,10 +45,10 @@
               class="slide image-fluid"
               :class="index == activeImage ? 'active' : ''"
             />
-            <div class="arrow-prev" @click="goToSlide(activeImage--)">
+            <div class="arrow-prev" @click="changeSlide(activeImage--)">
               <i class="fa-solid fa-arrow-up"></i>
             </div>
-            <div class="arrow-next" @click="goToSlide(activeImage++)">
+            <div class="arrow-next" @click="changeSlide(activeImage++)">
               <i class="fa-solid fa-arrow-down"></i>
             </div>
           </div>
