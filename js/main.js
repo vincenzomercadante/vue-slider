@@ -12,7 +12,7 @@ const app = createApp({
   },
 
   methods: {
-    goToSlide(index) {
+    goToSlide() {
       if (this.activeImage === this.allImages.length) {
         this.activeImage = 0;
       } else if (this.activeImage < 0) {

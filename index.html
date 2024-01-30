@@ -38,7 +38,7 @@
             <img
               v-for="(item, index) in allImages"
               :src="'./img/' + item"
-              class="slide"
+              class="slide image-fluid"
               :class="index == activeImage ? 'active' : ''"
             />
             <div class="arrow-prev" @click="goToSlide(activeImage--)">
@@ -52,8 +52,9 @@
             <img
               v-for="(item, index) in allImages"
               :src="'./img/' + item"
-              class="thumb"
+              class="thumb image-fluid"
               :class="index == activeImage ? 'active' : ''"
+              @click="activeImage=index"
             />
           </div>
         </div>
