@@ -45,10 +45,10 @@
               class="slide image-fluid"
               :class="index == activeImage ? 'active' : ''"
             />
-            <div class="arrow-prev" @click="changeSlide(activeImage--)">
+            <div class="arrow-prev" @click="prevSlide()">
               <i class="fa-solid fa-arrow-up"></i>
             </div>
-            <div class="arrow-next" @click="changeSlide(activeImage++)">
+            <div class="arrow-next" @click="nextSlide()">
               <i class="fa-solid fa-arrow-down"></i>
             </div>
           </div>
@@ -58,7 +58,7 @@
               :src="'./img/' + item"
               class="thumb image-fluid"
               :class="index == activeImage ? 'active' : ''"
-              @click="activeImage=index"
+              @click="goToSlide(index)"
             />
           </div>
         </div>

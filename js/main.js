@@ -12,16 +12,27 @@ const app = createApp({
   },
 
   methods: {
-    changeSlide() {
-      if (this.activeImage >= this.allImages.length) {
-        this.activeImage = 0;
-      } else if (this.activeImage < 0) {
-        this.activeImage = this.allImages.length - 1;
+    goToSlide(index) {
+      this.activeImage = index;
+    },
+
+    nextSlide() {
+      if (this.activeImage >= this.allImages.length - 1) this.activeImage = 0;
+      else {
+        this.activeImage++;
       }
     },
+
+    prevSlide() {
+      if (this.activeImage <= 0) this.activeImage = this.allImages.length - 1;
+      else {
+        this.activeImage--;
+      }
+    },
+
     startInterval() {
       this.interval = setInterval(() => {
-        this.changeSlide(this.activeImage++);
+        this.nextSlide();
       }, 3000);
     },
     stopInterval() {
