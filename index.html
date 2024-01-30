@@ -31,36 +31,47 @@
   <body>
     <!-- vue app container -->
     <div id="app">
-      <div class="container-custom">
-        <div
-          class="carousel-container"
-          @mouseleave="startInterval()"
-          @mouseover="stopInterval()"
-        >
-          <!-- contenitore slides -->
-          <div class="slide-container">
-            <img
-              v-for="(item, index) in allImages"
-              :src="'./img/' + item"
-              class="slide image-fluid"
-              :class="index == activeImage ? 'active' : ''"
-            />
-            <div class="arrow-prev" @click="prevSlide()">
-              <i class="fa-solid fa-arrow-up"></i>
-            </div>
-            <div class="arrow-next" @click="nextSlide()">
-              <i class="fa-solid fa-arrow-down"></i>
+      <!-- container carousel -->
+      <div
+        class="carousel-container"
+        @mouseleave="startInterval()"
+        @mouseover="stopInterval()"
+      >
+        <!-- contenitore slides -->
+        <div class="slide-container">
+          <!-- slides generator -->
+          <div
+            v-for="(slide, index) in allSlides"
+            class="slide"
+            :class="index == activeImage ? 'active' : ''"
+          >
+            <img :src="'./img/' + slide.image" :alt="'image' + index" />
+            <!-- text area slide -->
+            <div class="slide-text">
+              <p class="fw-bold display-4">{{slide.title}}</p>
+              <p class="fw-semibold fs-5">{{slide.text}}</p>
             </div>
           </div>
-          <div class="preview">
-            <img
-              v-for="(item, index) in allImages"
-              :src="'./img/' + item"
-              class="thumb image-fluid"
-              :class="index == activeImage ? 'active' : ''"
-              @click="goToSlide(index)"
-            />
+
+          <!-- left arrow -->
+          <div class="arrow-prev" @click="prevSlide()">
+            <i class="fa-solid fa-arrow-left"></i>
           </div>
+          <!-- right arrow -->
+          <div class="arrow-next" @click="nextSlide()">
+            <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+        <!-- thumbnail container -->
+        <div class="preview">
+          <!-- thumbnail generator -->
+          <img
+            v-for="(thumb, index) in allSlides"
+            :src="'./img/' + thumb.image"
+            class="thumb image-fluid"
+            :class="index == activeImage ? 'active' : ''"
+            @click="goToSlide(index)"
+          />
         </div>
       </div>
     </div>
