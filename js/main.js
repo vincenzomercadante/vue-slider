@@ -49,17 +49,13 @@ const app = createApp({
     // go to the next slide
     nextSlide() {
       if (this.activeImage === this.allSlides.length - 1) this.activeImage = 0;
-      else {
-        this.activeImage++;
-      }
+      else this.activeImage++;
     },
 
     // go to the previous slide
     prevSlide() {
       if (this.activeImage === 0) this.activeImage = this.allSlides.length - 1;
-      else {
-        this.activeImage--;
-      }
+      else this.activeImage--;
     },
 
     // start slide change interval
